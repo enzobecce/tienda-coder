@@ -1,0 +1,9 @@
+.margin {
+    margin: 5px
+}
+
+.image {
+    margin: auto;
+    min-width: min-content;
+    max-width: 100px;
+}
