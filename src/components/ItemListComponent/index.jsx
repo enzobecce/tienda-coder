@@ -1,20 +1,25 @@
-import { Card, Button } from "react-bootstrap";
+import { Card } from "react-bootstrap";
 import './styles.css';
+import { ItemCount } from "./CounterComponent";
 
-export const ItemList = () => {
+export const ItemList = ({product}) => {
     return (
-        <div className = 'margin'>
-            <Card style={{ width: '18rem' }}>
-            <Card.Img className = 'image' variant="top" src="./images/product-example.png" />
-            <Card.Body>
-                <Card.Title>Product Title</Card.Title>
-                <Card.Text className = 'text-secondary'>
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Culpa fugit voluptate similique saepe nam quia nesciunt est veniam maiores deleniti quos quis, cumque repellendus ad dolor aspernatur ipsam! Obcaecati, nesciunt!
-                </Card.Text>
-                <p>$ 100</p>
-                <Button variant="primary">Add to Cart</Button>
-            </Card.Body>
-            </Card>
-        </div>
-    )
+      <div className="margin">
+        <Card style={{ width: "18rem" }}>
+          <Card.Img
+            className="image"
+            variant="top"
+            src="./images/product-example.png"
+          />
+          <Card.Body>
+            <Card.Title>Product Title</Card.Title>
+            <Card.Text className="text-secondary">
+              {product.description}
+            </Card.Text>
+            <p>$ {product.price}</p>
+            <ItemCount stock = {product.stock} initial = {3} />
+          </Card.Body>
+        </Card>
+      </div>
+    );
 }

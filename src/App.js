@@ -4,10 +4,16 @@ import { NavBar } from './components/NavBarComponent/index';
 import { ItemList } from './components/ItemListComponent/index';
 
 function App() {
+  const product = {
+    id: 1,
+    price: 10,
+    description: "lorem",
+    stock: 0,
+  };
   return (
     <div className="App">
       <NavBar />
-      <ItemList />
+      <ItemList product= {product} />
     </div>
   );
 }
