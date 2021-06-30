@@ -1,20 +1,12 @@
 import { Item } from "../ItemComponent";
 import { useState, useEffect } from "react";
+import { getData } from "../../../utils/utils";
 
 export const ItemList = () => {
     const [products, setProducts] = useState([]);
-
-    async function getData() {
-      const response = await fetch(
-        "https://rickandmortyapi.com/api/character/1,2,3,4,5"
-      );
-      const data = response.json();
-      return data;
-    }
-
     useEffect(() => {
       const waitData = async () => {
-        let data =  await getData();
+        let data =  await getData(2);
          let aux = data.map((element) => {
            return {
              title: element.name,
@@ -28,16 +20,10 @@ export const ItemList = () => {
     };
     waitData();
     }, []);
-
-    if (products.length) {
-       console.log(products)
-    }
   return (
     <>
-      {products.map(element => {
-          return (
-              <Item products={element} />
-          )
+      {products.map((element, index) => {
+          return <Item key={index} products={element} />;
       })}
     </>
   );
