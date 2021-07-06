@@ -1,51 +1,36 @@
-import { Card, Row, Container, Col } from "react-bootstrap";
 import { useState, useEffect } from "react";
-import {ItemCount} from '../ItemListContainer/CounterComponent';
-import { getData } from "../../utils/utils.js";
+import { Spinner } from 'react-bootstrap';
+import { getOne } from "../../utils/utils.js";
+import { Detail } from "./ItemDetailComponent";
+import { useParams } from "react-router-dom";
 import './styles.css'
 
 export const ItemDetail = () => {
   const [products, setProducts] = useState([]);
-
+  const id = useParams();
   useEffect(() => {
     const waitData = async () => {
-      let data = await getData(1);
+      let data = await getOne(parseInt(id.id));
       let aux = {
+          id: data.id,
           title: data.name,
           description: data.gender,
           image: data.image,
           price: data.id,
           stock: data.id + 2,
         };
-      setProducts(aux);
+        setTimeout(()=>{
+          setProducts(aux);
+        },2000)
     };
     waitData();
-  }, []);
-  return (
-    <>
-      <Card>
-        <Container className = 'margin'>
-          <Row>
-            <Col lg={true}>
-              <Card.Img
-                className="d-block w-100"
-                variant="top"
-                src={products.image}
-              />
-            </Col>
-            <Col lg={true}>
-              <Card.Body>
-                <Card.Title>{products.title}</Card.Title>
-                <Card.Text className="text-secondary">
-                  {products.description}
-                </Card.Text>
-                <p>$ {products.price}</p>
-                <ItemCount stock={products.stock} initial={3} />
-              </Card.Body>
-            </Col>
-          </Row>
-        </Container>
-      </Card>
-    </>
-  );
+  }, [id]);
+  return (!(products.length === 0) ? (
+      <Detail product={products} />
+    ) : (
+      <Spinner animation="border" role="status">
+        <span className="sr-only">Loading...</span>
+      </Spinner>
+    )
+  )
 };

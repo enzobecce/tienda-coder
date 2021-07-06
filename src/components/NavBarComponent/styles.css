@@ -1,3 +1,6 @@
 img, div {
   margin: auto 5px;
 }
+.nav-link {
+  display: inline !important;
+}

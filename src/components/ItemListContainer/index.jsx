@@ -3,7 +3,7 @@ import { ItemList } from "./ItemListComponent";
 
 export const ItemListContainer = () => {
     return (
-      <div className="margin list">
+      <div className="list">
         <ItemList />
       </div>
     );

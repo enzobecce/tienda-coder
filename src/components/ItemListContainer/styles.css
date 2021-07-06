@@ -1,9 +1,6 @@
-.margin {
-    margin: 5px;
-}
-
 .list {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    justify-content: center;
 }

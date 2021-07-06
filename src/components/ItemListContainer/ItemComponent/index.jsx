@@ -1,17 +1,21 @@
 import { Card } from "react-bootstrap";
 import { ItemCount } from "../CounterComponent";
-import './styles.css'
+import './styles.css';
+import { Link } from "react-router-dom";
 
 export const Item = ({products}) => {
   return (
     <div className="productCard">
       <Card style={{ width: "18rem" }}>
-        <Card.Img className="productImg" variant="top" src={products.image} />
+        <Link to={`/item/${products.id}`}>
+          <Card.Img className="productImg" variant="top" src={products.image} />
+        </Link>
         <Card.Body>
-          <Card.Title>{products.title}</Card.Title>
+          <Link to={`/item/${products.id}`}>
+            <Card.Title>{products.title}</Card.Title>
+          </Link>
           <Card.Text className="text-secondary">
-            {" "}
-            {products.description}{" "}
+            {products.description}
           </Card.Text>
           <p>$ {products.price}</p>
           <ItemCount stock={products.stock} initial={3} />
