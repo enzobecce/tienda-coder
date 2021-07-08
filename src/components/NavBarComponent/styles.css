@@ -4,3 +4,8 @@ img, div {
 .nav-link {
   display: inline !important;
 }
+.top{
+  position: sticky;
+  top: 0;
+  z-index: 1020;
+}
