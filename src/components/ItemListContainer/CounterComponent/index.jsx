@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Button } from "react-bootstrap";
+import { Link } from "react-router-dom";
 import './style.css'
 
 export const ItemCount = ({stock, initial}) => {
@@ -33,13 +34,25 @@ export const ItemCount = ({stock, initial}) => {
 
         <Button
           className="margin-h"
-          variant="primary"
+          variant="outline-primary"
           onClick={onAdd}
           disabled={stock > 0 ? false : true}
         >
           Add to Cart
         </Button>
-        <p className='alert-danger margin-v'>{stock === 0 ? 'WO stock' : ''}</p>
+        <p className="alert-danger margin-v">{stock === 0 ? "WO stock" : ""}</p>
+        {cart.length ? (
+          <Link to={'/cart'}>
+            <Button
+              className="margin-h"
+              variant="info"
+            >
+                Checkout
+            </Button>
+          </Link>
+        ) : (
+          ""
+        )}
       </div>
     );
     function onAdd() {

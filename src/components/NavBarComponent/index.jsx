@@ -5,7 +5,7 @@ import './styles.css'
 
 export const NavBar = () => {
     return (
-      <Navbar className='top' bg="light" variant="light" expand="lg">
+      <Navbar className="top" bg="light" variant="light" expand="lg">
         <img src="/images/logo.png" alt="Panalera Store" />
         <Navbar.Brand>
           <Link to={"/"}>Panalera Store</Link>
@@ -16,21 +16,20 @@ export const NavBar = () => {
             <Link className="nav-link" to={"/"}>
               Home
             </Link>
-            <Link className="nav-link">Profile</Link>
-            <Nav.Link>
-              <NavDropdown title="Categories" id="basic-nav-dropdown">
-                <Link to={`/category/1`}>
-                  <NavDropdown.Item>Toys</NavDropdown.Item>
-                </Link>
-                <Link to={`/category/2`}>
-                  <NavDropdown.Item>Hygiene</NavDropdown.Item>
-                </Link>
-                <NavDropdown.Divider />
-                <Link to={`/`}>
-                  <NavDropdown.Item>View All</NavDropdown.Item>
-                </Link>
+            <Link className="nav-link" to ={'/'}>Profile</Link>
+              <NavDropdown
+                title="Categories"
+                id="basic-nav-dropdown"
+              >
+                <NavDropdown.Item>
+                  <Link to={'/category/1'}>
+                    Toys
+                  </Link>
+                </NavDropdown.Item>
+                <NavDropdown.Item>
+                  <Link to={`/category/2`}>Hygiene</Link>
+                </NavDropdown.Item>
               </NavDropdown>
-            </Nav.Link>
             <CartWidget />
           </Nav>
           <Form inline>
